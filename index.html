@@ -329,7 +329,7 @@
     </footer>
 </div>
 <script>
-  const codeElement = document.getElementById('code');
+const codeElement = document.getElementById('code');
 const codeLines = [
     '[    0.000000] Booting Website Server...',
     '[    0.001000] Initializing hardware...',
@@ -407,6 +407,9 @@ let currentLine = 0;
 let initialDelayApplied = false;
 document.getElementById('main-content').style.display = 'none';
 
+
+const typingSound = new Audio('keyboard.wav');
+
 function displayNextLine() {
     if (currentLine < codeLines.length) {
         codeElement.textContent += codeLines[currentLine] + '\n';
@@ -419,6 +422,9 @@ function displayNextLine() {
             delay = 1000;
             initialDelayApplied = true;
         }
+
+
+        typingSound.play().catch(error => console.log("Error playing sound:", error));
 
         setTimeout(displayNextLine, delay);
     } else {
@@ -437,6 +443,7 @@ function displayNextLine() {
 window.onload = function() {
     displayNextLine();
 };
+
 </script>
 
     <script>
